@@ -11,6 +11,14 @@
         on bt.user_id = ut.id
     </select>
 
+    <select id="findByIdWithUser" resultType="shop.mtcoding.blog.dto.board.BoardResp$BoardDetailRespDto">
+        select bt.id, bt.title, bt.content, bt.user_id, ut.username
+        from board_tb bt
+        inner join user_tb ut
+        on bt.user_id = ut.id
+        where bt.id = #{id}
+    </select>
+
     <select id="findAll" resultType="shop.mtcoding.blog.model.Board">
         select * from board_tb
     </select>
