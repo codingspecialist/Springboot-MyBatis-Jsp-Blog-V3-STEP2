@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -51,13 +50,28 @@ public class BoardControllerTest {
     }
 
     @Test
+    public void delete_test() throws Exception {
+        // given
+        int id = 1;
+
+        // when
+        ResultActions resultActions = mvc.perform(
+                delete("/board/" + id).session(mockSession));
+        String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+        System.out.println("테스트 : "+responseBody);
+
+        // then
+        resultActions.andExpect(status().isOk());
+    }
+
+    @Test
     public void detail_test() throws Exception {
         // given
         int id = 1;
 
         // when
         ResultActions resultActions = mvc.perform(
-                get("/board/"+id));
+                get("/board/" + id));
         Map<String, Object> map = resultActions.andReturn().getModelAndView().getModel();
         BoardDetailRespDto dto = (BoardDetailRespDto) map.get("dto");
         String model = om.writeValueAsString(dto);
