@@ -32,7 +32,7 @@
     </insert>    
 
     <delete id="deleteById" >
-        delete from board_tb where id = #{id} 
+        delete from board_tb where id = #{id}
     </delete>    
 
     <update id="updateById" >
