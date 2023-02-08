@@ -4,10 +4,12 @@
 
 
 <div class="container my-3">
-    <div class="mb-3">
-        <a href="/board/1/updateForm" class="btn btn-warning">수정</a>
-        <button onclick="deleteById(${dto.id})" class="btn btn-danger">삭제</button>
-    </div>
+    <c:if test="${dto.userId == principal.id}">
+        <div class="mb-3">
+            <a href="/board/${dto.id}/updateForm" class="btn btn-warning">수정</a>
+            <button onclick="deleteById(${dto.id})" class="btn btn-danger">삭제</button>
+        </div>
+    </c:if>
 
 
     <div class="mb-2">
@@ -58,15 +60,15 @@
 </div>
 
 <script>
-    function deleteById(id){
+    function deleteById(id) {
         $.ajax({
-            type:"delete",
-            url:"/board/"+id,
-            dataType:"json"
-        }).done((res)=>{ // 20X 일때
+            type: "delete",
+            url: "/board/" + id,
+            dataType: "json"
+        }).done((res) => { // 20X 일때
             alert(res.msg);
-            location.href="/";
-        }).fail((err)=>{ // 40X, 50X 일때
+            location.href = "/";
+        }).fail((err) => { // 40X, 50X 일때
             alert(err.responseJSON.msg);
         });
     }
