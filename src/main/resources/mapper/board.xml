@@ -28,7 +28,7 @@
     </select>    
 
     <insert id="insert">
-        insert into board_tb (title, content, user_id, created_at) values(#{title}, #{content}, #{userId}, now())
+        insert into board_tb (title, content, thumbnail, user_id, created_at) values(#{title}, #{content}, #{thumbnail}, #{userId}, now())
     </insert>    
 
     <delete id="deleteById" >
@@ -36,6 +36,6 @@
     </delete>    
 
     <update id="updateById" >
-        update board_tb set title= #{title},content= #{content} where id = #{id} 
+        update board_tb set title= #{title},content= #{content}, thumbnail=#{thumbnail} where id = #{id}
     </update>    
 </mapper>
