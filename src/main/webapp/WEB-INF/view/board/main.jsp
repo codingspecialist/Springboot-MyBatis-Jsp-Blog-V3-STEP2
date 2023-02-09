@@ -6,7 +6,7 @@
     <div class="my-board-box row">
 
         <c:forEach items="${dtos}" var="dto">
-            <div class="card col-lg-3">
+            <div class="card col-lg-3 pt-2">
                 <img class="card-img-top" style="height: 250px;" src="${dto.thumbnail}" alt="Card image">
                 <hr/>
                 <div class="card-body">
