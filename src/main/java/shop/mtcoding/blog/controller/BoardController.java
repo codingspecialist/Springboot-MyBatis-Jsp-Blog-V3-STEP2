@@ -60,6 +60,7 @@ public class BoardController {
         return new ResponseEntity<>(new ResponseDto<>(1, "삭제성공", null), HttpStatus.OK);
     }
 
+    // dev 개발
     @PostMapping("/board")
     public @ResponseBody ResponseEntity<?> save(@RequestBody BoardSaveReqDto BoardSaveReqDto) {
         User principal = (User) session.getAttribute("principal");
