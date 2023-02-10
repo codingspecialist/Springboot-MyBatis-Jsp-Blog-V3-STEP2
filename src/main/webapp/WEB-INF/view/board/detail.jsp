@@ -34,12 +34,13 @@
     <i id="heart" class="fa-regular fa-heart fa-lg"></i>
 
     <div class="card mt-3">
-        <form>
+        <form action="/reply" method="post">
+            <input type="hidden" name="boardId" value="${dto.id}">
             <div class="card-body">
-                <textarea id="reply-content" class="form-control" rows="1"></textarea>
+                <textarea name="comment" id="reply-comment" class="form-control" rows="1"></textarea>
             </div>
             <div class="card-footer">
-                <button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+                <button type="submit" id="btn-reply-save" class="btn btn-primary">등록</button>
             </div>
         </form>
     </div>
