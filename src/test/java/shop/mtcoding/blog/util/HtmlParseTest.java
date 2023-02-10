@@ -10,15 +10,16 @@ public class HtmlParseTest {
 
     @Test
     public void jsoup_test1() throws Exception{
-        System.out.println("================================");
-        Document doc = Jsoup.connect("https://en.wikipedia.org/").get();
-        System.out.println(doc);
-        System.out.println("================================");
-        Elements newsHeadlines = doc.select("#mp-itn b a");
-        for (Element headline : newsHeadlines) {
-            System.out.println(headline.attr("title"));
-            System.out.println(headline.absUrl("href"));
-        }
+        String url = "https://search.naver.com/search.naver?where=view&sm=tab_jum&query=%EB%B6%80%EC%82%B0+%EB%A7%9B%EC%A7%91";
+        Document doc = Jsoup.connect(url).get();
+        //System.out.println(doc);
+        // #main_pack > section > div > div._list > panel-list > div:nth-child(1) > more-contents > div > ul > li:nth-child > div > div > a > mark
+
+        Elements elements = doc.select("._svp_item .total_wrap a img");
+        System.out.println("size : "+elements.size());
+        elements.stream().forEach((e)->{
+            System.out.println(e.attr("src"));
+        });
     }
 
     @Test
@@ -56,7 +57,7 @@ public class HtmlParseTest {
         String s1 = el.substring(el.indexOf(attr));
 
         int begin = s1.indexOf("\"");
-        int end = s1.indexOf("\"", 2);
+        int end = s1.lastIndexOf("\"", 2);
 
         return s1.substring(begin+1, end);
     }
