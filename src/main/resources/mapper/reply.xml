@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="shop.mtcoding.blog.model.ReplyRepository">
 
+    <select id="findByBoardIdWithUser" resultType="shop.mtcoding.blog.dto.reply.ReplyResp$ReplyDetailRespDto">
+        select rt.id, rt.comment, rt.user_id, rt.board_id, ut.username
+        from reply_tb rt
+                 inner join user_tb ut
+                            on rt.user_id = ut.id
+        where rt.board_id = #{boardId}
+    </select>
+
     <select id="findAll" resultType="shop.mtcoding.blog.model.Reply">
-        select * from reply_tb
+        select *
+        from reply_tb
     </select>
 
     <select id="findById" resultType="shop.mtcoding.blog.model.Reply">
-        select * from reply_tb where id = #{id}
-    </select>    
+        select *
+        from reply_tb
+        where id = #{id}
+    </select>
 
     <insert id="insert">
-        insert into reply_tb (comment, board_id, user_id, created_at) values(#{comment}, #{boardId}, #{userId}, now())
-    </insert>    
+        insert into reply_tb (comment, board_id, user_id, created_at)
+        values (#{comment}, #{boardId}, #{userId}, now())
+    </insert>
 
-    <delete id="deleteById" >
-        delete from reply_tb where id = #{id}
-    </delete>    
+    <delete id="deleteById">
+        delete
+        from reply_tb
+        where id = #{id}
+    </delete>
 
-    <update id="updateById" >
-        update reply_tb set comment= #{comment} where id = #{id}
-    </update>    
+    <update id="updateById">
+        update reply_tb
+        set comment= #{comment}
+        where id = #{id}
+    </update>
 </mapper>
