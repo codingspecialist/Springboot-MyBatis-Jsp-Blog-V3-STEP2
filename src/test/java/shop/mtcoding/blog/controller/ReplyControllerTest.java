@@ -17,6 +17,7 @@ import shop.mtcoding.blog.model.User;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -45,6 +46,20 @@ public class ReplyControllerTest {
 
         mockSession = new MockHttpSession();
         mockSession.setAttribute("principal", user);
+    }
+
+    @Test
+    public void deleteReply_test() throws Exception {
+        // given
+        int id = 1;
+
+        // when
+        ResultActions resultActions = mvc.perform(
+                delete("/reply/"+id)
+                        .session(mockSession));
+
+        // then
+        resultActions.andExpect(status().isOk());
     }
 
     @Test
