@@ -64,7 +64,7 @@
 </div>
 
 <script>
-    function deleteByReplyId(id, boardId){
+    function deleteByReplyId(id){
         $.ajax({
             type: "delete",
             url: "/reply/" + id,
