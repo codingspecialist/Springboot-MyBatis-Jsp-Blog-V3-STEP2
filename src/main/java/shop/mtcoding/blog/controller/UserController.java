@@ -39,8 +39,6 @@ public class UserController {
         }
 
         // 사진이 아니면 ex 터트리기
-
-
         User userPS = userService.프로필사진수정(profile, principal.getId());
         session.setAttribute("principal", userPS);
 

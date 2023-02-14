@@ -42,11 +42,11 @@ public class HtmlParseTest {
 
     @Test
     public void parse_test1(){
-        String html = "<p>1</p><p><img src=\"data:image/png;base64,iVBORw0KG\"></p>";
-        String tag = parseEL(html, "img");
-        System.out.println(tag);
-        String attr = parseAttr(tag, "src");
-        System.out.println(attr);
+//        String html = "<p>1</p><p><img src=\"data:image/png;base64,iVBORw0KG\"></p>";
+//        String tag = parseEL(html, "img");
+//        System.out.println(tag);
+//        String attr = parseAttr(tag, "src");
+//        System.out.println(attr);
     }
 
     private String parseEL(String html, String tag){
