@@ -16,7 +16,7 @@
         select * from love_tb where id = #{id}
     </select>    
 
-    <insert id="insert">
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into love_tb (board_id, user_id, created_at) values(#{boardId}, #{userId}, now())
     </insert>    
 

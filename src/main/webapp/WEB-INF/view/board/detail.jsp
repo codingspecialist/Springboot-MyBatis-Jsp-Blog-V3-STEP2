@@ -43,11 +43,14 @@
     </c:choose>
 
     <script>
+
+
         function loveOrCancel(){
             let boardId = $("#boardId").val();
             let id = $("#heart").attr("value");
+            console.log(id);
 
-            if (id == undefined) {
+            if (id == "") {
                 // 좋아요 통신 요청 (POST)
                 let data = {
                     boardId: boardId
@@ -60,7 +63,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json"
                 }).done((res) => { // 20X 일때
-                    alert(res.msg);
+                    //alert(res.msg);
                     $("#heart").attr("value", res.data);
                     $("#heart").addClass("fa-solid");
                     $("#heart").removeClass("fa-regular");
@@ -74,8 +77,8 @@
                     url: "/love/"+id,
                     dataType: "json"
                 }).done((res) => { // 20X 일때
-                    alert(res.msg);
-                    $("#heart").attr("value", undefined);
+                    //alert(res.msg);
+                    $("#heart").attr("value", "");
                     $("#heart").removeClass("fa-solid");
                     $("#heart").addClass("fa-regular");
                 }).fail((err) => { // 40X, 50X 일때
